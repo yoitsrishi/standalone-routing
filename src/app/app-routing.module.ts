@@ -11,14 +11,13 @@ const routes: Route[] = [
   },
   {
     path: 'about',
-    component: AboutComponent,
+    loadComponent: () =>
+      import('./about/about.component').then((mod) => mod.AboutComponent),
   },
   {
     path: 'dashboard',
     loadChildren: () =>
-      import('./dashboard/dashboard-routing.module').then(
-        (mod) => mod.DashboardRoutingModule
-      ),
+      import('./dashboard/route').then((mod) => mod.DASHBOARD_ROUTES),
   },
 ];
 
